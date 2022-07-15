@@ -127,8 +127,7 @@ mkswap_test()
 		return
 	fi
 
-	udevadm trigger --name-match=$TST_DEVICE
-	udevadm settle --exit-if-exists==$TST_DEVICE
+	udevadm trigger --settle --name-match=$TST_DEVICE
 
 	if [ -n "$device" ]; then
 		mkswap_verify "$mkswap_op" "$op_arg" "$device" "$size" "$dev_file"
